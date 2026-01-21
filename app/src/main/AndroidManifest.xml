@@ -21,6 +21,8 @@
         <activity
             android:name=".InicioActivity"
             android:exported="true">
+        <activity android:name=".GenerarClaveActivity" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
