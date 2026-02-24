@@ -59,7 +59,8 @@
         android:inputType="textPassword"
         android:padding="10dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/edittext_underline"    android:textColor="@color/TextHint"
+        android:background="@drawable/edittext_underline"
+            android:textColor="@color/TextHint"
         android:textColorHint="@color/TextHint"/>
 
         <TextView

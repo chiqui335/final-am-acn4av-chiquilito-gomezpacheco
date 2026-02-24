@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,8 +59,9 @@ public class GenerarClaveActivity extends AppCompatActivity {
         checkEspeciales = findViewById(R.id.checkEspeciales);
         seekBarLongitud = findViewById(R.id.seekBarLongitud);
         txtLongitud = findViewById(R.id.txtLongitud);
+        ImageButton btnBack = findViewById(R.id.btnBack);
 
-        // Si en tu layout existe btnCerrarSesion, lo conectamos. Si no, lo ignoramos.
+        // Si en el layout existe btnCerrarSesion, lo conecta. Si no, lo ignora.
         try {
             btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
             if (btnCerrarSesion != null) {
@@ -134,6 +136,14 @@ public class GenerarClaveActivity extends AppCompatActivity {
         });
 
         resetearCampos();
+
+
+
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(GenerarClaveActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish(); // opcional: cierra esta activity
+        });
     }
 
     private void resetearCampos() {

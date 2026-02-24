@@ -17,6 +17,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:contentDescription="Volver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imgLogo"
+        app:layout_constraintBottom_toBottomOf="@id/imgLogo"
+        android:layout_marginStart="16dp"/>
+
     <TextView
         android:id="@+id/txtPassword"
         android:layout_width="0dp"
@@ -114,7 +126,7 @@
 
     <LinearLayout
         android:id="@+id/ButtonsMain"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
@@ -122,63 +134,73 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
-        android:padding="8dp">
+        android:padding="16dp">
 
         <Button
             android:id="@+id/btnCopiar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="COPIAR"
             android:backgroundTint="#358E2F"
             android:textColor="@color/TextHint"
-            android:layout_marginEnd="24dp"/>
+            android:layout_marginEnd="8dp"/>
 
         <Button
             android:id="@+id/btnGuardar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="GUARDAR"
             android:backgroundTint="@android:color/holo_blue_light"
             android:textColor="@color/TextHint"
-            android:layout_marginEnd="24dp" />
+            android:layout_marginEnd="8dp"/>
 
         <Button
             android:id="@+id/btnCancelar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"  android:text="CANCELAR"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="CANCELAR"
             android:backgroundTint="#C4253A"
             android:textColor="@color/TextHint"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/ButtonsMain"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp"
-        android:padding="8dp">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ButtonsMain">
 
         <Button
             android:id="@+id/btnVerClaves"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="VER CONTRASEÑAS"
-            android:textStyle="bold"
-            android:textColor="@color/TextButton1"
-            android:backgroundTint="#ffb84d"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp" /> <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CERRAR SESIÓN"
-        android:textStyle="bold"
-        android:textColor="@color/TextHint"
-        android:backgroundTint="#C4253A"
-        android:layout_marginTop="4dp" />
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:backgroundTint="#ffb84d"
+            android:text="VER CONTRASEÑAS"
+            android:textColor="@color/TextButton1"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C4253A"
+            android:text="CERRAR SESIÓN"
+            android:textColor="@color/TextHint"
+            android:textStyle="bold" />
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +25,8 @@ import java.util.List;
 
 public class VerClaves extends AppCompatActivity {
 
-    TextView txtListadoClaves;
+    RecyclerView recyclerClaves;
+
     Button btnVolver; // <-- Declarar el botón aquí
 
     private FirebaseAuth mAuth;
@@ -33,7 +37,9 @@ public class VerClaves extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_claves); // Asumiendo que este es el layout con el logo, el TextView y el botón "Volver"
 
-        txtListadoClaves = findViewById(R.id.txtListadoClaves);
+        recyclerClaves = findViewById(R.id.recyclerClaves);
+        recyclerClaves.setLayoutManager(new LinearLayoutManager(this));
+
         btnVolver = findViewById(R.id.btnVolver); // <-- Enlazar el botón aquí
 
         // Inicialización de Firebase
@@ -50,12 +56,14 @@ public class VerClaves extends AppCompatActivity {
                 finish(); // Esto cierra la Activity actual y regresa a la anterior
             }
         });
+
+
     }
 
     private void cargarClavesDesdeFirestore() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser == null) {
-            txtListadoClaves.setText("No hay usuario autenticado.");
+
             Toast.makeText(this, "Inicia sesión para ver tus claves.", Toast.LENGTH_LONG).show();
             Log.e("VerClaves", "No hay usuario autenticado para cargar claves.");
             return;
@@ -76,6 +84,7 @@ public class VerClaves extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 try {
                                     Clave clave = document.toObject(Clave.class);
+                                    clave.setId(document.getId());
                                     listaClaves.add(clave);
                                     Log.d("VerClaves", document.getId() + " => " + document.getData());
                                 } catch (Exception e) {
@@ -84,22 +93,18 @@ public class VerClaves extends AppCompatActivity {
                                 }
                             }
 
+                            ClaveAdapter adapter = new ClaveAdapter(listaClaves, userId);
+                            recyclerClaves.setAdapter(adapter);
+
                             if (listaClaves.isEmpty()) {
-                                txtListadoClaves.setText("No hay claves guardadas para este usuario.");
-                            } else {
-                                StringBuilder resultado = new StringBuilder();
-                                for (Clave c : listaClaves) {
-                                    resultado.append("🔐 Nombre: ").append(c.getNombre())
-                                            .append("\n🔑 Clave: ").append(c.getClave())
-                                            .append("\n📅 Fecha: ").append(c.getFecha())
-                                            .append("\n\n");
-                                }
-                                txtListadoClaves.setText(resultado.toString());
+                                Toast.makeText(VerClaves.this,
+                                        "No hay claves guardadas.",
+                                        Toast.LENGTH_SHORT).show();
                             }
+
                         } else {
                             Toast.makeText(VerClaves.this, "Error al cargar claves: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             Log.w("VerClaves", "Error al obtener documentos: ", task.getException());
-                            txtListadoClaves.setText("Error al cargar las claves.");
                         }
                     }
                 });

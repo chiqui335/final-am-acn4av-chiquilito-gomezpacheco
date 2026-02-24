@@ -3,6 +3,7 @@ public class Clave {
     private String nombre; //
     private String clave;  //
     private String fecha;  //
+    private String id;
 
     // 1. Constructor
     public Clave() {
@@ -16,6 +17,10 @@ public class Clave {
     }
 
     // Métodos Getter
+
+    public String getId() {
+        return id;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -29,6 +34,10 @@ public class Clave {
     }
 
     // Métodos Setter
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
