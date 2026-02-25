@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0C476E">
+    android:background="@color/darkCyanBackground">
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -84,9 +84,9 @@
             android:layout_marginTop="8dp"
             android:max="12"
             android:progress="4"
-            android:thumbTint="#ffb84d"
-            android:progressTint="#ffb84d"
-            android:backgroundTint="#FFFFFF"/>
+            android:thumbTint="@color/yellow"
+            android:progressTint="@color/yellow"
+            android:backgroundTint="@color/white"/>
 
         <TextView
             android:id="@+id/txtLongitud"
@@ -104,7 +104,7 @@
         android:layout_height="wrap_content"
         android:text="Incluir caracteres especiales"
         android:textColor="@color/TextHint"
-        android:buttonTint="#ffb84d"
+        android:buttonTint="@color/yellow"
         android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@id/longitudContainer"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +118,7 @@
         android:text="GENERAR"
         android:textStyle="bold"
         android:textColor="@color/TextButton1"
-        android:backgroundTint="#ffb84d"
+        android:backgroundTint="@color/yellow"
         app:layout_constraintTop_toBottomOf="@id/checkEspeciales"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

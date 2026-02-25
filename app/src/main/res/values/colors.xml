@@ -8,6 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="lightCyan">#2EEBD8</color>
+    <color name="lightPaleBlue">#B9FFFFFF</color>
+    <color name="lightBlue">#2AFFFFFF</color>
+    <color name="darkMagenta">#2A1420</color>
+    <color name="brightGreen">#33FF4D4D</color>
+    <color name="paleRed">#FF4D4D</color>
+
+
 
     <color name="yellow">#ffb84d</color>
     <color name="TextHint">#F6F6F6</color>
