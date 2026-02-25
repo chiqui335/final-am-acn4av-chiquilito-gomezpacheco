@@ -12,4 +12,6 @@
     <color name="yellow">#ffb84d</color>
     <color name="TextHint">#F6F6F6</color>
     <color name="TextButton1">#0a3f60</color>
+
+    <color name="darkCyanBackground">#0C476E</color>
 </resources>

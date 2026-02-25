@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="#121212"
-    android:padding="24dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:orientation="vertical"
+    android:padding="24dp">
 
     <EditText
         android:id="@+id/editNombre"
-        android:hint="Nombre de la clave"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="Nombre de la clave"
+        android:textColor="@color/white" />
 
     <EditText
         android:id="@+id/editClave"
-        android:hint="Nueva contraseña"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        android:hint="Nueva contraseña"
         android:inputType="textPassword"
-        android:layout_marginTop="16dp"/>
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnGuardar"
-        android:text="Guardar cambios"
-        android:layout_marginTop="24dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Guardar cambios" />
 </LinearLayout>
