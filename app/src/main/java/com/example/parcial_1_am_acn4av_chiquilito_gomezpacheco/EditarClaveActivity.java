@@ -43,6 +43,13 @@ public class EditarClaveActivity extends AppCompatActivity {
         String nombre = getIntent().getStringExtra("nombre");
         String clave = getIntent().getStringExtra("clave");
 
+        // Validación para evitar crash
+        if (documentoId == null) {
+            Toast.makeText(this, "Error: ID no recibido", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         editNombre.setText(nombre);
         editClave.setText(clave);
 

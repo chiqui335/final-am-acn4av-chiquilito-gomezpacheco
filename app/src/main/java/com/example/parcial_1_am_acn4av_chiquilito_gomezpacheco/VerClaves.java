@@ -2,7 +2,8 @@ package com.example.parcial_1_am_acn4av_chiquilito_gomezpacheco;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button; // <-- Importar Button
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -27,7 +28,7 @@ public class VerClaves extends AppCompatActivity {
 
     RecyclerView recyclerClaves;
 
-    Button btnVolver; // <-- Declarar el botón aquí
+    ImageButton btnVolver;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
@@ -35,12 +36,12 @@ public class VerClaves extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ver_claves); // Asumiendo que este es el layout con el logo, el TextView y el botón "Volver"
+        setContentView(R.layout.activity_ver_claves);
 
         recyclerClaves = findViewById(R.id.recyclerClaves);
         recyclerClaves.setLayoutManager(new LinearLayoutManager(this));
 
-        btnVolver = findViewById(R.id.btnVolver); // <-- Enlazar el botón aquí
+        btnVolver = findViewById(R.id.btnVolver);
 
         // Inicialización de Firebase
         mAuth = FirebaseAuth.getInstance();
@@ -49,7 +50,7 @@ public class VerClaves extends AppCompatActivity {
         // Cargar y mostrar las claves desde Firestore
         cargarClavesDesdeFirestore();
 
-        // >>> Lógica para el botón "Volver" <<<
+        // Lógica para el botón volver
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

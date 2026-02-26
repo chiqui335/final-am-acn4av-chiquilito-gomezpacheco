@@ -34,4 +34,13 @@
         android:layout_height="wrap_content"
         android:text="Guardar cambios"/>
 
+    <Button
+        android:id="@+id/btnCopiar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COPIAR"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/TextButton1"
+        android:layout_marginTop="8dp"/>
+
 </LinearLayout>

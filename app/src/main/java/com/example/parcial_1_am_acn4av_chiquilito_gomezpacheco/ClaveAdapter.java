@@ -28,7 +28,7 @@ public class ClaveAdapter extends RecyclerView.Adapter<ClaveAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         EditText edtNombre, edtClave;
-        Button btnGenerar, btnGuardar;
+        Button btnGenerar, btnGuardar, btnCopiar;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -36,6 +36,7 @@ public class ClaveAdapter extends RecyclerView.Adapter<ClaveAdapter.ViewHolder> 
             edtClave = itemView.findViewById(R.id.edtClave);
             btnGenerar = itemView.findViewById(R.id.btnGenerar);
             btnGuardar = itemView.findViewById(R.id.btnGuardar);
+            btnCopiar = itemView.findViewById(R.id.btnCopiar);
         }
     }
 
@@ -72,6 +73,22 @@ public class ClaveAdapter extends RecyclerView.Adapter<ClaveAdapter.ViewHolder> 
 
             Toast.makeText(holder.itemView.getContext(),
                     "Actualizado", Toast.LENGTH_SHORT).show();
+        });
+
+        holder.btnCopiar.setOnClickListener(v ->{
+            String texto = holder.edtClave.getText().toString();
+
+            if(!texto.isEmpty()) {
+                android.content.ClipboardManager clipboard =
+                        (android.content.ClipboardManager)
+                            holder.itemView.getContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE);
+
+                android.content.ClipData clip =
+                        android.content.ClipData.newPlainText("Contraseña", texto);
+
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(holder.itemView.getContext(), "Contraseña copiada", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
