@@ -104,4 +104,10 @@ public class VerClaves extends AppCompatActivity {
                     }
                 });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarClavesDesdeFirestore();
+    }
 }

@@ -3,6 +3,7 @@ package com.example.parcial_1_am_acn4av_chiquilito_gomezpacheco;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class ClaveAdapter extends RecyclerView.Adapter<ClaveAdapter.VH> {
     private final List<Clave> listaClaves;
     private final String userId;
     private final FirebaseFirestore db;
+    // static ImageButton btnEditar;
 
     // mostrar claves por defecto
     private final boolean mostrarPorDefecto;
@@ -106,6 +108,14 @@ public class ClaveAdapter extends RecyclerView.Adapter<ClaveAdapter.VH> {
                     .setNegativeButton("No", null)
                     .show();
         });
+
+        h.btnEditar.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), EditarClaveActivity.class);
+            intent.putExtra("documentId", item.getId());
+            intent.putExtra("nombre", item.getNombre());
+            intent.putExtra("clave", item.getClave());
+            v.getContext().startActivity(intent);
+        });
     }
 
     private void borrar(Clave item, Context context) {
@@ -147,7 +157,7 @@ public class ClaveAdapter extends RecyclerView.Adapter<ClaveAdapter.VH> {
 
     static class VH extends RecyclerView.ViewHolder {
         TextView txtTitulo, txtUsuario, txtPassword;
-        ImageButton btnVer, btnCopiar, btnEliminar;
+        ImageButton btnVer, btnCopiar, btnEliminar, btnEditar;
 
         VH(@NonNull View itemView) {
             super(itemView);
@@ -158,6 +168,8 @@ public class ClaveAdapter extends RecyclerView.Adapter<ClaveAdapter.VH> {
             btnVer = itemView.findViewById(R.id.btnVer);
             btnCopiar = itemView.findViewById(R.id.btnCopiar);
             btnEliminar = itemView.findViewById(R.id.btnEliminar);
+
+            btnEditar = itemView.findViewById(R.id.btnEditar);
         }
     }
 }

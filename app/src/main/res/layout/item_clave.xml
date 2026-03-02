@@ -73,7 +73,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Ver/Ocultar"
                 android:src="@drawable/ic_visibility"
-                android:tint="@color/yellow"/>
+                app:tint="@color/yellow"/>
 
             <ImageButton
                 android:id="@+id/btnCopiar"
@@ -83,7 +83,17 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Copiar"
                 android:src="@drawable/ic_copy"
-                android:tint="@color/yellow"/>
+                app:tint="@color/yellow"/>
+
+            <ImageButton
+                android:id="@+id/btnEditar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Editar"
+                android:src="@drawable/ic_edit"
+                app:tint="@color/yellow"/>
 
             <ImageButton
                 android:id="@+id/btnEliminar"
@@ -93,7 +103,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Eliminar"
                 android:src="@drawable/ic_delete"
-                android:tint="@color/paleRed"/>
+                app:tint="@color/paleRed"/>
 
         </LinearLayout>
 
