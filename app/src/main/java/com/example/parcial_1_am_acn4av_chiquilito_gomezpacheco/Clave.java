@@ -1,52 +1,41 @@
 package com.example.parcial_1_am_acn4av_chiquilito_gomezpacheco;
+
 public class Clave {
-    private String nombre; //
-    private String clave;  //
-    private String fecha;  //
+
     private String id;
+    private String nombre;
+    private String clave;
+    private String fecha;
+    private String tipo;
 
-    // 1. Constructor
-    public Clave() {
-    }
+    public Clave() {}
 
-    // Constructor
+    // 👇 ESTE ES EL QUE TE FALTA
     public Clave(String nombre, String clave, String fecha) {
         this.nombre = nombre;
         this.clave = clave;
         this.fecha = fecha;
     }
 
-    // Métodos Getter
-
-    public String getId() {
-        return id;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    // Métodos Setter
-
-    public void setId(String id) {
-        this.id = id;
-    }
-    public void setNombre(String nombre) {
+    public Clave(String nombre, String clave, String fecha, String tipo) {
         this.nombre = nombre;
-    }
-
-    public void setClave(String clave) {
         this.clave = clave;
+        this.fecha = fecha;
+        this.tipo = tipo;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+    public String getClave() { return clave; }
+    public void setClave(String clave) { this.clave = clave; }
+
+    public String getFecha() { return fecha; }
+    public void setFecha(String fecha) { this.fecha = fecha; }
+
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 }

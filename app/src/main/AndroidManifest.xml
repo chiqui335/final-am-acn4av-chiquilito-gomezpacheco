@@ -13,27 +13,20 @@
         android:theme="@style/Theme.Parcial1amacn4avchiquilitogomezpacheco"
         tools:targetApi="31">
 
-        <activity android:name=".EditarClaveActivity"
-            android:exported="false" />
-
-        <activity android:name=".VerClaves"
-            android:exported="false" />
-
-        <activity android:name=".GenerarClaveActivity"
-            android:exported="false" />
-
         <activity
             android:name=".InicioActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".AjustesActivity" android:exported="false" />
+        <activity android:name=".GenerarClaveActivity" android:exported="false" />
+        <activity android:name=".VerClaves" android:exported="false" />
+        <activity android:name=".EditarClaveActivity" android:exported="false" />
 
     </application>
 

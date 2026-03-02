@@ -1,11 +1,11 @@
 package com.example.parcial_1_am_acn4av_chiquilito_gomezpacheco;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,7 +27,6 @@ import java.util.List;
 public class VerClaves extends AppCompatActivity {
 
     RecyclerView recyclerClaves;
-
     ImageButton btnVolver;
 
     private FirebaseAuth mAuth;
@@ -43,28 +42,17 @@ public class VerClaves extends AppCompatActivity {
 
         btnVolver = findViewById(R.id.btnVolver);
 
-        // Inicialización de Firebase
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Cargar y mostrar las claves desde Firestore
         cargarClavesDesdeFirestore();
 
-        // Lógica para el botón volver
-        btnVolver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish(); // Esto cierra la Activity actual y regresa a la anterior
-            }
-        });
-
-
+        btnVolver.setOnClickListener(v -> finish());
     }
 
     private void cargarClavesDesdeFirestore() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser == null) {
-
             Toast.makeText(this, "Inicia sesión para ver tus claves.", Toast.LENGTH_LONG).show();
             Log.e("VerClaves", "No hay usuario autenticado para cargar claves.");
             return;
@@ -82,6 +70,7 @@ public class VerClaves extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             List<Clave> listaClaves = new ArrayList<>();
+
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 try {
                                     Clave clave = document.toObject(Clave.class);
@@ -94,21 +83,25 @@ public class VerClaves extends AppCompatActivity {
                                 }
                             }
 
-                            ClaveAdapter adapter = new ClaveAdapter(listaClaves, userId);
+                            // Leer preferencia "mostrar por defecto"
+                            SharedPreferences prefs = getSharedPreferences("config", MODE_PRIVATE);
+                            boolean mostrarPorDefecto = prefs.getBoolean("mostrar_claves", false);
+
+                            // Pasar la preferencia al Adapter
+                            ClaveAdapter adapter = new ClaveAdapter(listaClaves, userId, mostrarPorDefecto);
                             recyclerClaves.setAdapter(adapter);
 
                             if (listaClaves.isEmpty()) {
-                                Toast.makeText(VerClaves.this,
-                                        "No hay claves guardadas.",
-                                        Toast.LENGTH_SHORT).show();
+                                Toast.makeText(VerClaves.this, "No hay claves guardadas.", Toast.LENGTH_SHORT).show();
                             }
 
                         } else {
-                            Toast.makeText(VerClaves.this, "Error al cargar claves: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(VerClaves.this,
+                                    "Error al cargar claves: " + (task.getException() != null ? task.getException().getMessage() : ""),
+                                    Toast.LENGTH_LONG).show();
                             Log.w("VerClaves", "Error al obtener documentos: ", task.getException());
                         }
                     }
                 });
     }
-
 }

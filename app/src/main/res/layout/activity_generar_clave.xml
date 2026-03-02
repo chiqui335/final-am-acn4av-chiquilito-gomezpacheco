@@ -13,7 +13,6 @@
         android:contentDescription="@string/minilogo_app"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,20 +20,20 @@
         android:id="@+id/btnBack"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/baseline_arrow_back_24"
         android:contentDescription="Volver"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/imgLogo"
+        android:src="@drawable/baseline_arrow_back_24"
         app:layout_constraintBottom_toBottomOf="@id/imgLogo"
-        android:layout_marginStart="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imgLogo" />
 
     <TextView
         android:id="@+id/txtPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:padding="10dp"
         android:text="Aquí aparecerá la contraseña"
@@ -44,163 +43,222 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgLogo" />
 
-    <LinearLayout
-        android:id="@+id/longitudContainer"
+    <!-- Nombre -->
+    <EditText
+        android:id="@+id/etNombreClave"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/edittext_underline"
+        android:hint="Nombre de la contraseña"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textColor="@color/TextHint"
+        android:textColorHint="@color/TextHint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtPassword">
+        app:layout_constraintTop_toBottomOf="@id/txtPassword" />
 
-        <EditText
-            android:id="@+id/etNombreClave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nombre de la contraseña"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/edittext_underline"
-            android:textColor="@color/TextHint"
-            android:textColorHint="@color/TextHint" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Longitud de la contraseña:"
-            android:textColor="@color/TextHint"
-            android:textSize="16sp"/>
-
-        <SeekBar
-            android:id="@+id/seekBarLongitud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:max="12"
-            android:progress="4"
-            android:thumbTint="@color/yellow"
-            android:progressTint="@color/yellow"
-            android:backgroundTint="@color/white"/>
-
-        <TextView
-            android:id="@+id/txtLongitud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="12 caracteres"
-            android:textColor="@color/TextHint"
-            android:textSize="15sp"/>
-    </LinearLayout>
-
-    <CheckBox
-        android:id="@+id/checkEspeciales"
+    <!-- Modo -->
+    <TextView
+        android:id="@+id/txtModo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Incluir caracteres especiales"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="14dp"
+        android:text="Modo de generación:"
         android:textColor="@color/TextHint"
-        android:buttonTint="@color/yellow"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/longitudContainer"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etNombreClave" />
+
+    <RadioGroup
+        android:id="@+id/rgModo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtModo">
+
+        <RadioButton
+            android:id="@+id/rbPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/yellow"
+            android:checked="true"
+            android:text="Contraseña"
+            android:textColor="@color/TextHint" />
+
+        <RadioButton
+            android:id="@+id/rbPassphrase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:buttonTint="@color/yellow"
+            android:text="Passphrase"
+            android:textColor="@color/TextHint" />
+    </RadioGroup>
+
+        <LinearLayout
+        android:id="@+id/panelOpciones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/rgModo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Panel: Password -->
+        <LinearLayout
+            android:id="@+id/panelPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Longitud:"
+                android:textColor="@color/TextHint"
+                android:textSize="16sp" />
+
+            <SeekBar
+                android:id="@+id/seekBarLongitud"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:max="12"
+                android:progress="4"
+                android:progressTint="@color/yellow"
+                android:thumbTint="@color/yellow" />
+
+            <TextView
+                android:id="@+id/txtLongitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="12 caracteres"
+                android:textColor="@color/TextHint"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/checkEspeciales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:buttonTint="@color/yellow"
+                android:text="Incluir caracteres especiales"
+                android:textColor="@color/TextHint"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!-- Panel: Passphrase -->
+        <LinearLayout
+            android:id="@+id/panelPassphrase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cantidad de palabras:"
+                android:textColor="@color/TextHint"
+                android:textSize="16sp" />
+
+            <SeekBar
+                android:id="@+id/seekBarPalabras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:max="6"
+                android:progress="2"
+                android:progressTint="@color/yellow"
+                android:thumbTint="@color/yellow" />
+
+            <TextView
+                android:id="@+id/txtPalabras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="4 palabras"
+                android:textColor="@color/TextHint"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/checkGuiones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:buttonTint="@color/yellow"
+                android:text="Separar con guiones"
+                android:textColor="@color/TextHint"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/checkCapitalizar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:buttonTint="@color/yellow"
+                android:text="Capitalizar palabras"
+                android:textColor="@color/TextHint"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnGenerar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GENERAR"
-        android:textStyle="bold"
-        android:textColor="@color/TextButton1"
+        android:layout_marginTop="18dp"
         android:backgroundTint="@color/yellow"
-        app:layout_constraintTop_toBottomOf="@id/checkEspeciales"
+        android:text="GENERAR"
+        android:textColor="@color/TextButton1"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/panelOpciones"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Acciones finales -->
     <LinearLayout
         android:id="@+id/ButtonsMain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="22dp"
         android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp"
         app:layout_constraintTop_toBottomOf="@id/btnGenerar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp"
-        android:padding="16dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
             android:id="@+id/btnCopiar"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="COPIAR"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
             android:backgroundTint="#358E2F"
-            android:textColor="@color/TextHint"
-            android:layout_marginEnd="8dp"/>
+            android:text="COPIAR"
+            android:textColor="@color/TextHint" />
 
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="GUARDAR"
+            android:layout_weight="1"
             android:backgroundTint="@android:color/holo_blue_light"
-            android:textColor="@color/TextHint"
-            android:layout_marginEnd="8dp"/>
-
-        <Button
-            android:id="@+id/btnCancelar"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="CANCELAR"
-            android:backgroundTint="#C4253A"
-            android:textColor="@color/TextHint"/>
+            android:text="GUARDAR"
+            android:textColor="@color/TextHint" />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ButtonsMain">
-
-        <Button
-            android:id="@+id/btnVerClaves"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:layout_weight="1"
-            android:backgroundTint="#ffb84d"
-            android:text="VER CONTRASEÑAS"
-            android:textColor="@color/TextButton1"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnCerrarSesion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_weight="1"
-            android:backgroundTint="#C4253A"
-            android:text="CERRAR SESIÓN"
-            android:textColor="@color/TextHint"
-            android:textStyle="bold" />
-    </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

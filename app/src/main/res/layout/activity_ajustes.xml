@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_gradiente">
+
+    <!-- Flecha volver -->
+    <ImageButton
+        android:id="@+id/btnVolverAjustes"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:contentDescription="Volver"
+        android:backgroundTint="@color/yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTituloAjustes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajustes"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toTopOf="@id/btnVolverAjustes"
+        app:layout_constraintBottom_toBottomOf="@id/btnVolverAjustes"
+        app:layout_constraintStart_toEndOf="@id/btnVolverAjustes" />
+
+    <!-- CARD CUENTA -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardCuenta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#17324D"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/lightBlue"
+        app:layout_constraintTop_toBottomOf="@id/btnVolverAjustes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cuenta"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/txtEmailActual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Email: -"
+                android:textColor="@color/lightPaleBlue"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/btnResetPassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="14dp"
+                android:text="Cambiar contraseña (email)"
+                android:textAllCaps="false"
+                android:textColor="@color/TextButton1"
+                android:backgroundTint="@color/yellow" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- CARD PREFERENCIAS -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardPreferencias"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#17324D"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/lightBlue"
+        app:layout_constraintTop_toBottomOf="@id/cardCuenta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preferencias"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Mostrar claves por defecto"
+                    android:textColor="@color/lightPaleBlue"
+                    android:textSize="14sp"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchMostrarClaves"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

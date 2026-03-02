@@ -38,17 +38,16 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
     implementation("com.google.code.gson:gson:2.10.1")
 
-    // Firebase Bill of Materials (BoM)
-
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
 
-    // Dependencias de Firebase
-    // La versión la manejará la BoM. Usamos las versiones -ktx para Kotlin.
-    implementation("com.google.firebase:firebase-auth-ktx")
-    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
 }

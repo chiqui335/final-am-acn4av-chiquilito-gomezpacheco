@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, VerClaves.class))
         );
 
-        findViewById(R.id.cardAjustes).setOnClickListener(v -> {
-            // opcional por ahora: ajustar después
-        });
+        findViewById(R.id.cardAjustes).setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, AjustesActivity.class))
+        );
 
         findViewById(R.id.cardLogout).setOnClickListener(v -> {
             mAuth.signOut();

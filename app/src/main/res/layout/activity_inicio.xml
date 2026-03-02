@@ -73,6 +73,16 @@
             android:visibility="gone" />
 
         <Button
+            android:id="@+id/btnGoogle"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:text="Entrar con Google"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#4285F4" />
+
+        <Button
             android:id="@+id/btnIngresar"
             android:layout_width="127dp"
             android:layout_height="50dp"
